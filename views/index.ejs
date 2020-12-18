@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    crossorigin="anonymous">
+  <title>ShortLink</title>
+
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>URL Shrinker</h1>
+    <form action="/shortUrls" method="POST" class="my-4 form-inline">
+      <label for="fullUrl" class="sr-only">Url</label>
+      <input required placeholder="Url" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-1">
+      <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+
+    <table class="table table-striped table-responsive">
+      <thead>
+        <tr>
+          <th>Full URL</th>
+          <th>Short URL</th>
+          <th>Clicks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% shortUrls.forEach(shorturl => { %>
+        <tr>
+          <td><a href="<%= shorturl.full %>"><%= shorturl.full %></a></td>
+          <td><a href="<%= shorturl.short %>"><%= shorturl.short %></a></td>
+          <td><%=shorturl.clicks%></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+  </div>
+  <script>
+    // function checkURL(link) {
+    //   var string = link.value;
+    //   if (!~string.indexOf("http")) {
+    //     string = "http://" + string;
+    //   } else if (!~string.indexOf("https")) {
+    //     string = "https://" + string;
+    //   }
+    //   link.value = string;
+    //   return link
+    // }
+    // function checkURL(o) {
+    //   o.value = o.value.replace(/^(https?:\/\/)?/i, "http://");
+    // }
+  </script>
+</body>
+
+</html>
